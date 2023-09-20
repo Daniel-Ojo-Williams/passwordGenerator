@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="pass.css">
+  <title>Password Generator</title>
+</head>
+<body>
+  <nav class="nav-bar">
+    <div class="nav">
+      <div class="logo">
+        <h3>PASSY</h3>
+      </div>
+      <ul class="nav-links">
+        <li class="about"><a href="#">About</a></li>
+        <li class="feature"><a href="#">Feature</a></li>
+        <li class="footer"><a href="#">Footer</a></li>
+      </ul>
+      <span class="dark-toggle">
+        <span class="toggle-icon">
+          <i class="fas fa-moon"></i>
+        </span>
+      </span>
+    </div>
+  </nav>
+
+
+
+  <section>
+  <div class="container">
+    <h2>Pass Generator</h2>
+    <div class="wrapper">
+      <div class="display">
+        <div class="input-box">
+          <input type="text" disabled>
+          <span class="material-symbols-outlined">copy_all</span>
+        </div>
+        <div class="pass-indicator"></div>
+      </div>
+      <div class="pass-custom">
+        <div class="pass-length">
+          <div class="details">
+            <label for="" class="title">Password Length</label>
+            <span></span>
+          </div>
+          <input type="range" min="1" max="30" value="15" steps="1">
+        </div>
+        <div class="pass-settings">
+          <label for="" class="title">
+            Pass Settings
+          </label>
+          <ul class="options">
+            <li class="option">
+              <input type="checkbox" name="" id="lowercase" checked>
+              <label for="lowercase">Lowercase(a-z)</label>
+            </li>
+            <li class="option">
+              <input type="checkbox" name="" id="uppercase">
+              <label for="uppercase">Uppercase(A-Z)</label>
+            </li>
+            <li class="option">
+              <input type="checkbox" name="" id="numbers">
+              <label for="numbers">Numbers(0-9)</label>
+            </li>
+            <li class="option">
+              <input type="checkbox" name="" id="symbols">
+              <label for="symbols">Symbols(*?$_^)</label>
+            </li>
+            <li class="option">
+              <input type="checkbox" name="" id="exc-duplicate">
+              <label for="exc-duplicate">Exclude Duplicates</label>
+            </li>
+            <li class="option">
+              <input type="checkbox" name="" id="spaces">
+              <label for="spaces">Include Spaces</label>
+            </li>
+          </ul>
+        </div>
+        <button class="generate">Generate Password</button>
+      </div>
+    </div>
+  </div>
+  </section>
+</body>
+</html>
