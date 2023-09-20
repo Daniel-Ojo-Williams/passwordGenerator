@@ -186,6 +186,10 @@ section {
       margin: 0 auto;
     }
 
+    .display input {
+      color: #000;
+    }
+
   .display span
   {
     display: inline;
