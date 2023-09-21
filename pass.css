@@ -12,7 +12,7 @@
 section {
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   min-height: 90vh;
   width: 100vw;
   background: #fff;
@@ -24,16 +24,15 @@ section {
   display: flex;
   flex-direction: column;
   border-radius: 5px;
-
+  overflow: hidden;
 }
 
 .wrapper {
-  display: grid;
+  display: none;
   gap: 5rem;
   grid-template-columns: 1fr 1fr;
   align-items: center;
   width: 100%;
-  border-top: 1px solid #d4dbe5;
   margin: 0 auto;
   padding-top: 2rem;
 }
@@ -43,6 +42,48 @@ section {
   font-size: 1.5rem;
   padding: 0.85rem 0;
   margin-top: 2rem;
+  cursor: pointer;
+  position: relative;
+  color: #aaa;
+}
+
+.container h2.active {
+  color: #1e1e1e;
+}
+
+.wrapper.active {
+  display: grid;
+  animation: slide-right .4s ease;
+}
+
+.saved.active {
+  animation: slide-right .4s ease;
+}
+
+@keyframes slide-right
+{
+  0% {transform: translateX(-30rem);}
+  100% {transform: translateX(0);}
+}
+
+.container h2.active::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0.2rem;
+  bottom: 0;
+  border-radius: 4px 4px 0 0;
+  background-color: #0d85ff;
+}
+
+.container h2:hover {
+  color: #4f4f4f;
+}
+
+.header {
+  border-bottom: 1px solid #d4dbe5;
+  display: flex;
+  gap: 2rem;
 }
 
 .display {
@@ -71,7 +112,7 @@ section {
 .pass-custom {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .input-box input {
@@ -158,7 +199,21 @@ section {
   padding-left: 0.63rem;
 }
 
-.pass-custom .generate {
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+#save {
+  background: #0d85ff;
+  cursor: pointer;
+}
+
+#save:active {
+  transform: scale(0.98);
+}
+
+.pass-custom button {
   width: 100%;
   color: #fff;
   border: none;
@@ -171,18 +226,168 @@ section {
   border-radius: 5px;
 }
 
+.saved {
+  margin-top: 1rem;
+  display: none;
+}
+
+.saved.active {
+  display: block;
+}
+
+.saved .saved-password {
+  transition: 0.3s ease;
+  border-radius: 5px;
+  min-height: 3rem;
+  color: #ffe;
+  overflow: hidden;
+  transition: 0.5s ease-in;
+}
+
+.saved .saved-password .website {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 1rem;
+  z-index: 1;
+  background: #4f4f4f;
+}
+
+.saved .saved-password span:hover {
+  cursor: pointer;
+  scale: 1.2;
+  transition: 0.3s ease;
+}
+
+.saved span {
+  transition: 0.5s ease;
+}
+
+.password-content {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  background: #565656;
+  padding: 2rem 1rem;
+  transition: 0.5s ease;
+}
+
+.password-content.active {
+  display: flex;
+  /* transition: 0.5s ease; */
+  z-index: -10;
+  animation: slide-down 0.2s ease-in-out 1;
+}
+
+@keyframes slide-down {
+  0% {transform: translateY(-1rem)}
+  100% {transform: translateY(0);}
+}
+
+.save-box {
+  position: absolute;
+  top: 0;
+  background: #707070c9;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.box {
+  background-color: #fff;
+  width: 450px;
+  height: 50vh;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.box span {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  color: #e64a4a;
+  cursor: pointer;
+}
+
+.box p {
+  text-align: center;
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+}
+
+.box input {
+  height: 2.5rem;
+  width: 20rem;
+  padding: 0 10px;
+  outline: none;
+  border: 1px solid #6c6c6c;
+  border-radius: 5px;
+}
+
+.box button {
+  padding: 0.69rem 2rem;
+  border: none;
+  background: #0d85ff;
+  border-radius: 5px;
+  color: #ffe;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.pass-custom .warning {
+  color: #e64a4a;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media screen and (max-width: 800px) {
   .container {
     padding: 0 3rem;
   }
+
+  .wrapper.active {
+    display: block;
+  }
+  .saved.active {
+    display: block;
+  }
+
+  .saved {
+    display: none;
+  }
   
   .wrapper
     {
-      display: block;
+      display: none;
       width: 100%;
       padding-top: 1rem;
-      border-top: 1px solid #d4dbe5;
       margin: 0 auto;
     }
 
@@ -207,6 +412,15 @@ section {
   .container {
     padding: 0 1rem;
   }
+    .box
+    {
+      width: 90%;
+    }
+}
+
+
+.box input {
+  width: 80%;
 }
 
 @media  (max-width: 415px) {

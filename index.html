@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -34,12 +34,15 @@
 
   <section>
   <div class="container">
-    <h2>Pass Generator</h2>
-    <div class="wrapper">
+    <div class="header">
+      <h2 id="wrapper-header" class="active" data-filter="wrapper">Generator</h2>
+      <h2 id='saved-header' data-filter="saved">Passwords</h2>
+    </div>
+    <div class="content wrapper active">
       <div class="display">
         <div class="input-box">
           <input type="text" disabled>
-          <span class="material-symbols-outlined">copy_all</span>
+          <span class="material-symbols-rounded">copy_all</span>
         </div>
         <div class="pass-indicator"></div>
       </div>
@@ -82,11 +85,44 @@
             </li>
           </ul>
         </div>
-        <button class="generate">Generate Password</button>
+        <div class="buttons">
+          <button id="save">SAVE PASSWORD</button>
+          <button class="generate">Generate Password</button>
+        </div>
+        <span class="warning"></span>
+      </div>
+    </div>
+    <div class="content saved">
+      <div class="saved-password">
+        <div class="website">
+          <label for="">For: www.amazon.com</label>
+          <span class="material-symbols-rounded">expand_more</span>
+        </div>
+        <div class="password-content">
+          <p>
+            }&%8rp3eqTsMnO
+          </p>
+          <span class="material-symbols-rounded">copy_all</span>
+        </div>
       </div>
     </div>
   </div>
   </section>
+
+  <div class="save-box">
+    <div class="box">
+      <div class="top">
+        <h3>
+          Password is for:
+        </h3>
+        <p>Enter below</p>
+      </div>
+      <input type="text">
+      <button>Save</button>
+      <span class="material-symbols-rounded">close</span>
+      <p class="warning2"></p>
+    </div>
+  </div>
 
 
   <script src="pass.js"></script>
