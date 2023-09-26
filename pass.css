@@ -232,7 +232,10 @@ section {
 }
 
 .saved.active {
-  display: block;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, 1fr)
+
 }
 
 .saved .saved-password {
@@ -376,7 +379,7 @@ section {
     display: block;
   }
   .saved.active {
-    display: block;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .saved {
@@ -412,6 +415,11 @@ section {
   .container {
     padding: 0 1rem;
   }
+
+    .saved.active
+    {
+      grid-template-columns: 1fr;
+    }
     .box
     {
       width: 90%;

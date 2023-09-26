@@ -73,22 +73,6 @@ generateBtn.addEventListener('click', () => {
 });
 
 // saved password script
-const expandMore = document.querySelectorAll('.website span');
-const copy = document.querySelectorAll('.password-content span');
-const passwordContent = document.querySelectorAll('.password-content');
-const password = document.querySelectorAll('.password-content p');
-
-expandMore.forEach((expand) => expand.addEventListener('click', () => {
-  passwordContent.forEach((pc) => pc.classList.toggle('active'))
-  expand.innerText = pc.classList.contains('active') ? 'expand_less' : 'expand_more'
-}));
-
-// copy.addEventListener('click', () => {
-//   navigator.clipboard.writeText(password.innerText)
-//   copy.innerText = 'check';
-//   copy.style.color = '#4285f4'
-//   setTimeout((() => {copy.innerText = 'copy_all'; copy.style.color = '#ffe'}), 1500)
-// })
 
 const allHeader = document.querySelectorAll('h2');
 const allContent = document.querySelectorAll('.content')
@@ -112,10 +96,11 @@ boxClose.addEventListener('click', () => {
 });
 
 
-const passwordObject = [];
+let passwordObject = [];
 
 boxSaveButton.addEventListener('click', function(){
   const boxInput = document.querySelector('.box input');
+  boxInput.focus();
   
   const website = boxInput.value
   const password = passwordInput.value;
@@ -126,37 +111,65 @@ boxSaveButton.addEventListener('click', function(){
     warning2.innerText = 'Fill input';
   
   } else {
-    passwordObject.unshift({
-      website,
-      password
-    })
+    // create element
+    savePassword(website, password)
   
     warning2.innerText = 'Password Saved';
-    setTimeout(()=> {warning2.innerText = ''; boxInput.value = ''}, 2500)
+    warning2.style.color = 'green';
+    setTimeout(()=> {warning2.innerText = ''; boxInput.value = ''
     saveBox.style.display = 'none';
+  }, 1500)
     passwordInput.value = ''
   }
-  console.log(passwordObject);
+})
 
-  passwordObject.forEach((object) => {
-  const contentSaved = document.querySelector('.saved');
-  contentSaved.innerHTML += `<div class="saved-password">
+
+// create elemet(password) function
+function savePassword(website, password){
+  const passwordEl = document.createElement('LI');
+  
+  passwordEl.classList.add('saved-password');
+  
+  const parentEl = document.querySelector('.saved');
+  const savePassMarkUp = `
         <div class="website">
-          <label for="">For: ${object.website}</label>
+          <label for="">For: ${website}</label>
           <span class="material-symbols-rounded">expand_more</span>
         </div>
         <div class="password-content">
           <p>
-            ${object.password}
+            ${password}
           </p>
           <span class="material-symbols-rounded">copy_all</span>
-        </div>
-      </div>`
+        </div>`
 
+passwordEl.innerHTML = savePassMarkUp;
+parentEl.appendChild(passwordEl);
+
+}
+
+const listContainer = document.querySelector('.saved');
+
+
+// expand more...
+listContainer.addEventListener('click', (e) => {
+  if (e.target.innerText === 'expand_more'){
+    const passWordContent = e.target.closest('LI').lastElementChild;
+    passWordContent.classList.toggle('active')
+  }
+
+  if (e.target.innerText === 'copy_all'){
+    const password = e.target.previousElementSibling.innerText;
+    navigator.clipboard.writeText(password.innerText);
+
+    e.target.innerText = 'check';
+    e.target.style.color = '#4285f4'
+    setTimeout(() => {
+    e.target.innerText = 'copy_all';
+    e.target.style.color = '#707070'
+  }, 1500)
+  }
 })
-})
-
-
 
 
 
