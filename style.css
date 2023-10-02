@@ -41,6 +41,8 @@
 {
   padding: 0;
   margin: 0;
+  border: 0;
+  outline: 0;
   box-sizing: border-box;
   font-family: 'hanken grotesk', sans-serif;
 }
@@ -49,6 +51,7 @@ body {
   padding-top: 60px;
   background-color: var(--background);
   color: var(--foreground);
+  transition: all 0.3s ease;
 }
 
 .nav-links a.darkmode{
@@ -60,11 +63,12 @@ body {
 }
 
 nav {
+  transition: all 0.3s ease;
   position: fixed;
   top: 0;
   width: 100%;
-  /* background-color: #ffffff; */
-  /* box-shadow: 0 10px 30px rgba(0, 0, 0, .1); */
+  box-shadow: 0 10px 30px rgba(177, 177, 177, 0.1);
+  background-color: var(--background);
   z-index: 1;
 }
 
@@ -76,7 +80,6 @@ nav {
   max-width: 1200px;
   padding: 0 20px;
   margin: 0 auto;
-  background-color: var(--background);
 }
 
 .nav-links {
@@ -165,6 +168,8 @@ header h1 {
   transform: translate(0);
 }
 
+/* dark toggle */
+
 .dark-toggle {
   cursor: pointer;
   background: transparent;
@@ -185,6 +190,285 @@ header h1 {
   justify-items: end;
 }
 
+/* -----------------features styles ------------------------*/
+section#features {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+
+
+.feature-cards {
+  max-width: 1000px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  /* display: grid;
+   grid-template-columns: repeat(3, 1fr); 
+  grid-template-columns: repeat(auto-fit, minmax(350px, 350px));
+  gap: 20px; */
+}
+
+#features .feature-cards .card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  min-width: 300px;
+}
+
+#features .feature-cards .card i {
+  font-size: 3rem;
+  text-align: center;
+  width: 100%;
+}
+
+#features .feature-cards .card h1 {
+  margin: 10px 0;
+}
+
+#features .header h1 {
+  text-align: center;
+  text-transform: uppercase;
+  font-family: ubuntu, 'sans-serif';
+}
+#features .card {
+  padding: 30px;
+  box-shadow: 0 3px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  border: 2px solid transparent;
+  transition: all .3s ease;
+} 
+
+#features .card:hover {
+  border-color: #6c6c6c92;
+}
+
+#features .card .info h1 {
+  font-size: 1.5rem;
+  font-family: ubuntu, 'sans-serif';
+  font-weight: bold;
+}
+
+#features .card .info p {
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+
+
+
+/* authentication ==========================================*/
+section.authentication {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.container {
+  border-radius: 30px;
+  box-shadow: 0 3px 20px rgba(0, 0, 0, .35);
+  overflow: hidden;
+  position: relative;
+  width: 768px;
+  max-width: 100%;
+  min-height: 480px;
+}
+
+.container p {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.3px;
+  margin: 20px 0;
+}
+
+.container span {
+  font-size: 12px;
+}
+
+.container a {
+  color: #333;
+  font-size: 13px;
+  text-decoration: none;
+  margin: 15px 0 10px;
+}
+
+.container button {
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 12px;
+  padding: 10px 45px;
+  border: 2px solid transparent;
+  border-radius: 3px;
+  font-weight: 600;
+  letter-spacing: 0.8px; 
+  text-transform: uppercase;
+}
+
+.container button.hidden {
+  background-color: transparent;
+  border-color: #fff;
+}
+
+.container form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+  height: 100%;
+}
+
+.container input {
+  margin: 8px 0;
+  padding: 10px 15px;
+  font-size: 13px;
+  border-radius: 3px;
+  width: 100%;
+}
+
+.form-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: all .6s ease-in-out;
+}
+
+.sign-in {
+  left: 0;
+  width: 50%;
+  z-index: 1;
+  /* animation: move 0.6s ease-in-out; */
+}
+
+.container.active .sign-in{
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.sign-up {
+  left: 0;
+  width: 50%;
+  opacity: 0;
+  z-index: 1;
+  transition: all .6s ease-in-out;
+}
+
+.container.active .sign-up {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+  animation: move 0.6s;
+}
+
+@keyframes move {
+  0%, 49%{
+    opacity: 0;
+    z-index: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+
+  80% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+    z-index: 5;
+  }
+}
+
+.special-icons {
+  margin: 20px 0;
+}
+
+.special-icons a {
+  border: 1px solid #ccc;
+  border-radius: 20%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 3px;
+  width: 40px;
+  height: 40px;
+}
+
+.toggle-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: all 0.6s ease-in-out;
+  z-index: 1000;
+  border-radius: 150px 0 0 100px;
+}
+
+.container.active .toggle-container{
+  transform: translateX(-100%);
+  border-radius: 0 150px 100px 0;
+}
+
+.toggle {
+  background-color: var(--primary-color);
+  background: linear-gradient(to right, #5693efe8, #0d85ff);
+  height: 100%;
+  color: var(--white);
+  position: relative;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  transform: translateX(0);
+  transition: all 0.6s ease-in-out;
+}
+
+.container.active .toggle{
+  transform: translateX(50%);
+
+}
+
+.container .sm-account {
+      display: none;
+}
+
+.container .sm-account a{
+  color: var(--primary-color);
+}
+
+.toggle-panel{
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-left {
+  transform: translateX(-200%);
+}
+
+.container.active .toggle-left {
+  transform: translateX(0);
+}
+
+.toggle-right{
+  right: 0;
+  transform: translateX(0);
+}
+
+.container.active .toggle-right {
+  transform: translateX(200%);
+}
 @media screen and (max-width: 1000px) {  
   
 header
@@ -195,6 +479,10 @@ header
     grid-template-columns: 1.2fr 1fr;
     align-items: center;
     margin: 0 auto;
+  }
+
+  .feature-cards {
+    max-width: 90%;
   }
 
   header img
@@ -216,6 +504,23 @@ header
       justify-content: space-between;
       gap: 2rem;
       list-style: none;
+    }
+
+    .toggle-container {
+      display: none;
+    }
+
+    .form-container {
+      width: 100%;
+    }
+
+    .container.active .sign-up{
+      transform: translateX(0);
+    }
+
+    .container .sm-account {
+      display: block;
+      margin-top: 10px;
     }
 
     header
